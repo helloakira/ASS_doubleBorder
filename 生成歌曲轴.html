@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<textarea id="myTextarea" rows="10" cols="30"></textarea><br />
+		<input type="button" onclick="printSongArray()" value="打印歌曲轴" /> <br /><br />
+		
+	</body>
+	
+	<!-- JQ -->
+	<script>
+		function printSongArray() {
+			let songText = document.getElementById('myTextarea').value;
+			let songArray = songText.split("\n");
+			
+			let newSongArray = [];
+			
+			for (var i = 0; i < songArray.length; i++) {
+				if (songArray[i] == "") {
+					continue;
+				}
+				
+				let newObject = {
+					"songName": "",
+					"startTime": "",
+					"content": ""
+				};
+				
+				let oneSongArray = songArray[i].split("--");
+				newObject.songName = oneSongArray[0];
+				newObject.startTime = oneSongArray[1];
+				
+				newSongArray.push(newObject);
+			}
+			
+			let song = {"填写名字": newSongArray}
+			console.log(song);
+		}
+		
+
+	</script>
+</html>
